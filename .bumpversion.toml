@@ -4,6 +4,11 @@
     current_version = "0.3.5"
 
     [[tool.bumpversion.files]]
+      filename = ".bumpversion.tml"
+      replace = "current_version = \"{new_version}\""
+      search = "current_version = \"{current_version}\""
+
+    [[tool.bumpversion.files]]
       filename = "pyproject.toml"
       replace = "version = \"{new_version}\""
       search = "version = \"{current_version}\""
