@@ -20,7 +20,7 @@
     uv-publish = "uv_publish.cli:_main"
 
 [dependency-groups]
-  dev = ["dycw-utilities[test]", "pyright"]
+  dev = ["dycw-utilities[test]", "pyright", "rich"]
 
 [tool]
   [tool.uv]
