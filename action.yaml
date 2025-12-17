@@ -9,6 +9,9 @@ inputs:
   token:
     description: GitHub Personal Access Token
     default: ${{ github.token }}
+  trusted-publishing:
+    description: Configure trusted publishing
+    default: false
 
 runs:
   using: composite
@@ -26,5 +29,6 @@ runs:
     - name: Run 'uv-publish'
       env:
         APP_TOKEN: ${{ inputs.token }}
+        APP_TRUSTED_PUBLISHING: ${{ inputs.trusted-publishing }}
       run: uv run --with=dycw-uv-publish uv-publish
       shell: bash
