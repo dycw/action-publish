@@ -22,7 +22,13 @@ def _main(settings: Settings, /) -> None:
     LOGGER.info(
         "Running version %s with settings:\n%s...", __version__, pretty_repr(settings)
     )
-    uv_publish(trusted_publishing=settings.trusted_publishing)
+    uv_publish(
+        username=settings.username,
+        password=settings.password,
+        publish_url=settings.publish_url,
+        trusted_publishing=settings.trusted_publishing,
+        native_tls=settings.native_tls,
+    )
 
 
 if __name__ == "__main__":
