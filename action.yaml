@@ -8,7 +8,7 @@ branding:
 inputs:
   token:
     description: GitHub Personal Access Token
-    default: ${{ github.token }}
+    default: ${{github.token}}
   username:
     username: The username of the upload
     default:
@@ -44,11 +44,11 @@ runs:
 
     - name: Run 'action publish'
       env:
-        TOKEN: ${{ inputs.token }}
-        USERNAME: ${{ inputs.username }}
-        PASSWORD: ${{ inputs.password }}
-        PUBLISH_URL: ${{ inputs.publish-url }}
-        TRUSTED_PUBLISHING: ${{ inputs.trusted-publishing }}
-        NATIVE_TLS: ${{ inputs.native-tls }}
+        TOKEN: ${{inputs.token}}
+        USERNAME: ${{inputs.username}}
+        PASSWORD: ${{inputs.password}}
+        PUBLISH_URL: ${{inputs.publish-url}}
+        TRUSTED_PUBLISHING: ${{inputs.trusted-publishing}}
+        NATIVE_TLS: ${{inputs.native-tls}}
       run: uv tool run --from dycw-actions --isolated action publish
       shell: bash
