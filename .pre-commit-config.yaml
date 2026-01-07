@@ -1,9 +1,9 @@
 repos:
   - repo: https://github.com/dycw/conformalize
-    rev: 0.13.6
+    rev: 0.13.7
     hooks:
       - args:
-          - --description=Build and publish package
+          - --description=Build and publish the package
           - --github--pull-request--pre-commit
           - --github--push--tag
           - --github--push--tag--latest
