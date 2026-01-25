@@ -41,12 +41,26 @@ runs:
       with:
         github-token: ${{inputs.token-github}}
 
-    - name: Run 'action publish-package'
-      env:
-        USERNAME: ${{inputs.username}}
-        PASSWORD: ${{inputs.password}}
-        PUBLISH_URL: ${{inputs.publish-url}}
-        TRUSTED_PUBLISHING: ${{inputs.trusted-publishing}}
-        NATIVE_TLS: ${{inputs.native-tls}}
-      run: uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow --managed-python cli publish-package
+    - name: Run 'publish-package'
+      run: set -euo pipefail
+        args=(uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow --managed-python cli publish-package)
+        if [ -n "${{inputs.username}}" ]; then
+        args+=(--username "${{inputs.username}}")
+        fi
+        if [ -n "${{inputs.password}}" ]; then
+        args+=(--password "${{inputs.password}}")
+        fi
+        if [ -n "${{inputs.publish-url}}" ]; then
+        args+=(--publish-url "${{inputs.publish-url}}")
+        fi
+        if [ -n "${{inputs.trusted-publishing}}" ]; then
+        args+=(--trusted-publishing)
+        fi
+        if [ -n "${{inputs.native-tls}}" ]; then
+        args+=(--native-tls)
+        fi
+        echo "[$(date +'%Y-%m-%d %H:%M:%S')] Running:"
+        printf '%q ' "${args[@]}"
+        echo
+        "${args[@]}"
       shell: bash
